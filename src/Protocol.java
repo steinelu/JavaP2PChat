@@ -16,6 +16,7 @@ public class Protocol {
 	protected NetIn net;
 	
 	private Userput user;
+	private NodeMsgWindow window;
 	
 	//private static ArrayList<Integer> mem = new ArrayList<Integer>();
 	
@@ -40,7 +41,9 @@ public class Protocol {
 		
 		if((msg = (String) obj.get("msg"))!=null) {
 			//System.out.println(msg);
-			user.output(msg);
+			if(window != null) {
+				window.addMsgScreen(msg);
+			}
 		}
 		
 		if((str = (String) obj.get("cmd")) != null) { 
@@ -88,6 +91,10 @@ public class Protocol {
 	
 	private void handleTable(JSONObject obj) {
 		
+	}
+
+	public void setWindow(NodeMsgWindow nodeMsgWindow) {
+		this.window = nodeMsgWindow;
 	}
 	
 }

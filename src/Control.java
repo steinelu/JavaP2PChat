@@ -28,7 +28,8 @@ public class Control {
 			switch(handleCommand(str)) {
 			case SELECT:
 				if (select()) {
-					getMsgInput();
+					//getMsgInput();
+					NodeMsgWindow.createNodeMsgWindow(node);
 				}
 				break;
 			case ADD:
@@ -129,6 +130,7 @@ public class Control {
 	public static void main(String[] args) {
 		// -Djava.net.preferIPv6Addresses=true
 		System.setProperty("java.net.preferIPv6Addresses", "true");
+		
 		
 		new Control();
 	}
