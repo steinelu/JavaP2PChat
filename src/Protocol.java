@@ -15,7 +15,6 @@ public class Protocol {
 	protected Node node;
 	protected NetIn net;
 	
-	private Userput user;
 	private NodeMsgWindow window;
 	
 	//private static ArrayList<Integer> mem = new ArrayList<Integer>();
@@ -23,7 +22,6 @@ public class Protocol {
 	public Protocol(Node node, NetIn net) {
 		this.node = node;
 		this.net = net;
-		this.user = new Userput(node);
 		this.parser = new JSONParser();
 	}
 	

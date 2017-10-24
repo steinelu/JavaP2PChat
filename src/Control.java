@@ -44,41 +44,21 @@ public class Control {
 			}
 		}
 	}
-	
-	private void getMsgInput() {
-		String str;
-		for(;;) {
-			System.out.print(">");
-			str = scan.nextLine();
-			switch(handleCommand(str)) {
-			case CLOSE:
-				return;
-			case EXIT:
-				System.exit(0);
-			case TABLE:
-				node.send("cmd", "tab");
-				break;
-			case MESSAGE:
-			default:
-				node.send(str);
-			}
-		}
-	}
 
 	private command handleCommand(String str) {
-		if(str.equals(":select")) {
+		if(str.equals("select")) {
 			return command.SELECT;
 		}
-		else if(str.equals(":close")) {
+		else if(str.equals("close")) {
 			return command.CLOSE;
 		}
-		else if(str.equals(":exit")) {
+		else if(str.equals("exit")) {
 			return command.EXIT;
 		}
-		else if(str.equals(":add")) {
+		else if(str.equals("add")) {
 			return command.ADD;
 		}
-		else if(str.equals(":table")) {
+		else if(str.equals("table")) {
 			return command.TABLE;
 		}
 		else {
@@ -130,7 +110,6 @@ public class Control {
 	public static void main(String[] args) {
 		// -Djava.net.preferIPv6Addresses=true
 		System.setProperty("java.net.preferIPv6Addresses", "true");
-		
 		
 		new Control();
 	}

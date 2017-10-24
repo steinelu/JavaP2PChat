@@ -1,14 +1,8 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JTextField;
-import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
 import javax.swing.JTextArea;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
@@ -79,26 +73,20 @@ public class NodeMsgWindow {
 	}
 	
 	private class SwingAction extends AbstractAction {
+		private static final long serialVersionUID = 1L;
 		public SwingAction() { 
 			putValue(NAME, "SwingAction");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
-			node.send(msg.getText());
+			String str = msg.getText();
+			node.send(str);
+			addMsgScreen(str);
 			msg.setText("");
 		}
 	}
 	
 	public void addMsgScreen(String msg) {
 		screen.setText(screen.getText() + "\n" + msg);
-	}
-	
-	public static NodeMsgWindow getWindow(Node node) {
-		for(NodeMsgWindow window: windows) {
-			if(node == window.node.node) {
-				return window;
-			}
-		}
-		return null;
 	}
 }
